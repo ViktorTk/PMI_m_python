@@ -1,7 +1,12 @@
 import pandas as pd
+
+# Функция для разбиения исходного набора данных на выборки для обучения и тестирования модели.
 from sklearn.model_selection import train_test_split
+# Класс для стандартизации показателей.
 from sklearn.preprocessing import StandardScaler
+# Класс для создания и обучения модели.
 from sklearn.neighbors import KNeighborsClassifier
+# Функции для оценки точности модели.
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 
@@ -50,8 +55,10 @@ def is_alone(row):
 df['Alone'] = df.apply(is_alone, axis = 1)
 
 print(df.pivot_table(values = 'Age', columns = 'Alone',
+                     
 index = 'Survived', aggfunc = 'count'))
 print(df.head())
+
 x = df.drop('Survived', axis = 1) # Данные о пассажирах
 y = df['Survived'] # Целевая переменная
 
@@ -80,9 +87,11 @@ for test, pred in zip(y_test, y_pred):
         else:
             FP += 1
 
+# TP, TN, FP, FN = 0, 0, 0, 0
 #алгоритм распределения по категориям
 print('Верный прогноз: выжившие -', TP, 'погибшие -', TN)
 print('Ошибочный прогноз: выжившие -', FP, 'погибшие -', FN)
+
 confusion_matrix(y_test, y_pred)
 
 
