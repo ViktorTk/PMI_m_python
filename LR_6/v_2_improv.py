@@ -52,7 +52,7 @@ for col in ['Pop. Density (per sq. mi.)', 'Net migration']:
         }
     )
 
-# Выводим средние значение по плотности населения и уровню чистой миграции
+# Выводим средние значение по плотности населения и уровень чистой миграции
 df = df.groupby('Region').agg(
     {'Pop. Density (per sq. mi.)': 'mean', 'Net migration': 'mean'}
 )
