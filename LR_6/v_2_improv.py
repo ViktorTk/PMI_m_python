@@ -64,7 +64,3 @@ df = df.sort_values(by='Net migration', ascending=False)
 print(df)
 
 
-
-
-
-
